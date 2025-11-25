@@ -9,7 +9,7 @@ class CustomerRepository:
         cur = conn.cursor()
         rows = cur.execute("SELECT * FROM customers").fetchall()
         conn.close()
-        return [Customer(row["id"], row["firstname"], row["surname"],  row["user_type"], row["telephone"], row["email"]) for row in rows]
+        return [Customer(row["id"], row["name"], row["surname"],  row["user_type"], row["telephone"], row["email"]) for row in rows]
     
     @staticmethod
     def delete_customer(customer_id):

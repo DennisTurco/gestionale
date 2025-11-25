@@ -27,7 +27,7 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>Customers</h2>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAggiungiCliente">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddCustomer">
                 + New Customer
             </button>
         </div>
@@ -39,7 +39,7 @@
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
-                        <th>FirstName</th>
+                        <th>Name</th>
                         <th>Surname</th>
                         <th>Type</th>
                         <th>Phone</th>
@@ -51,7 +51,7 @@
                     {% for c in customers %}
                     <tr>
                         <td>{{ c.id }}</td>
-                        <td>{{ c.firstname }}</td>
+                        <td>{{ c.name }}</td>
                         <td>{{ c.surname }}</td>
                         <td>{{ c.user_type }}</td>
                         <td>{{ c.telephone }}</td>
@@ -69,7 +69,7 @@
 </div>
 
 <!-- Modal Add Customer -->
-<div class="modal fade" id="modalAggiungiCliente" tabindex="-1">
+<div class="modal fade" id="modalAddCustomer" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -85,9 +85,9 @@
           <div class="mb-3">
             <label class="form-label">Customer Type</label>
             <select class="form-select" required>
-                <option value="azienda">Azienda</option>
-                <option value="ditta">Ditta Individuale / PA</option>
-                <option value="privato">Privato</option>
+                <option value="company">Company</option>
+                <option value="private_admin">Private Admin</option>
+                <option value="private">Private</option>
             </select>
           </div>
           <div class="mb-3">
@@ -102,7 +102,7 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button class="btn btn-primary" onclick="salvaCliente()">Save</button>
+        <button class="btn btn-primary" onclick="saveCustomer()">Save</button>
       </div>
     </div>
   </div>
@@ -117,7 +117,7 @@
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
 <script>
-    // Inizializza DataTables
+    // DataTables Init
     $(document).ready(function() {
         $('#customer-table').DataTable({
             "language": {
@@ -128,7 +128,7 @@
         });
     });
 
-    function salvaCliente() {
+    function saveCustomer() {
         alert("Funzione salvataggio da implementare");
     }
 </script>
