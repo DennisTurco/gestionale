@@ -38,6 +38,9 @@ To build an executable using PyWebView, the following system tools must be insta
     - Add the folder to your PATH environment variable.
     - Verify installation: `nuget`
 
+## Tools
+
+For the Database manipulation data: [SQLiteStudio](https://sqlitestudio.pl/)
 
 ## Project Information
 
