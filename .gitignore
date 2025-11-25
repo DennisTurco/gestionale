@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database files
+*.db
+
+# Environment variables
+.env
+
+# Mac system files
+.DS_Store
+
+# Flask instance folder
+instance/
+
+# Test outputs
+/tests/*.pyc

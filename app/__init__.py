@@ -7,9 +7,13 @@ def create_app():
     from app.routes.main import bp as main_bp
     app.register_blueprint(main_bp)
 
+    # Error Handlers
+    from app.routes import error_page
+    error_page.register_error_handlers(app)
+
     # Route Customer
-    from app.routes.clienti import bp as clienti_bp
-    app.register_blueprint(clienti_bp)
+    from app.routes.customers import bp as customers_bp
+    app.register_blueprint(customers_bp)
 
     # API PyWebView
     from app.api import Api
