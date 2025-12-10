@@ -9,3 +9,4 @@ DATABASE_PATH = os.path.join(DATABASE_DIR, "management.db")
 # Migration paths
 MIGRATIONS_DIR = os.path.join(DATABASE_DIR, "migrations")
 INIT_SQL = os.path.join(MIGRATIONS_DIR, "init.sql")
+TEST_DATA_SQL = os.path.join(MIGRATIONS_DIR, "test_data.sql")

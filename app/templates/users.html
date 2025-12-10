@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Customers</title>
+    <title>Users</title>
 
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -26,47 +26,41 @@
 <div class="container mt-4">
 
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Customers</h2>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddCustomer">
-            + New Customer
-        </button>
-    </div>
-
-    {% set types = ['company', 'public_admin', 'private'] %}
-    {% for t in types %}
-    <div class="card mb-4">
-        <div class="card-header bg-dark text-white">
-            {{ t | capitalize }} Customers
+            <h2>Users</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddUser">
+                + New User
+            </button>
         </div>
+
+    <!-- User table -->
+    <div class="card">
         <div class="card-body">
-            <table id="customer-table-{{ t }}" class="table table-striped table-hover">
+            <table id="user-table" class="table table-striped table-hover">
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Business Name</th>
+                        <th>Role</th>
+                        <th>Username</th>
                         <th>Name</th>
                         <th>Surname</th>
-                        <th>Phone</th>
                         <th>Email</th>
+                        <th>Password</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for c in customers if c.type == t %}
+                    {% for u in users %}
                     <tr>
-                        <td>{{ c.id }}</td>
-                        <td>{{ c.business_name }}</td>
-                        <td>{{ c.name }}</td>
-                        <td>{{ c.surname }}</td>
-                        <td>{{ c.phone }}</td>
-                        <td>{{ c.email }}</td>
+                        <td>{{ u.id }}</td>
+                        <td>{{ u.role }}</td>
+                        <td>{{ u.username }}</td>
+                        <td>{{ u.name }}</td>
+                        <td>{{ u.surname }}</td>
+                        <td>{{ u.email }}</td>
+                        <td>{{ u.password }}</td>
                         <td>
-                            <button class="btn btn-sm btn-outline-secondary">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button class="btn btn-sm btn-outline-danger">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                     {% endfor %}
@@ -74,31 +68,36 @@
             </table>
         </div>
     </div>
-    {% endfor %}
-
 </div>
 
-<!-- Modal Add Customer -->
-<div class="modal fade" id="modalAddCustomer" tabindex="-1">
+<!-- Modal Add User -->
+<div class="modal fade" id="modalAddUser" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add Customer</h5>
+        <h5 class="modal-title">Add User</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <form id="formAggiungiCliente">
+        <form id="formAddUser">
           <div class="mb-3">
-            <label class="form-label">Customer Name</label>
+            <label class="form-label">Role</label>
+            <select class="form-select" required>
+                <option value="company">Admin</option>
+                <option value="private_admin">User</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Username</label>
             <input type="text" class="form-control" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Customer Type</label>
-            <select class="form-select" required>
-                <option value="company">Company</option>
-                <option value="private_admin">Private Admin</option>
-                <option value="private">Private</option>
-            </select>
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Surname</label>
+            <input type="text" class="form-control" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Phone Number</label>
@@ -112,7 +111,7 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button class="btn btn-primary" onclick="saveCustomer()">Save</button>
+        <button class="btn btn-primary" onclick="saveUser()">Save</button>
       </div>
     </div>
   </div>
@@ -129,19 +128,16 @@
 <script>
     // DataTables Init
     $(document).ready(function() {
-        const types = ['company', 'public_admin', 'private'];
-        types.forEach(t => {
-            $(`#customer-table-${t}`).DataTable({
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/it-IT.json"
-                },
-                "pageLength": 20,
-                "lengthMenu": [5, 10, 20, 50]
-            });
+        $('#user-table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.13.6/i18n/it-IT.json"
+            },
+            "pageLength": 20,
+            "lengthMenu": [5, 10, 20, 50]
         });
     });
 
-    function saveCustomer() {
+    function saveUser() {
         alert("Funzione salvataggio da implementare");
     }
 </script>

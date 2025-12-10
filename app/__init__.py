@@ -15,6 +15,10 @@ def create_app():
     from app.routes.customers import bp as customers_bp
     app.register_blueprint(customers_bp)
 
+    # Route User
+    from app.routes.users import bp as users_bp
+    app.register_blueprint(users_bp)
+
     # API PyWebView
     from app.api import Api
     app.api = Api()
