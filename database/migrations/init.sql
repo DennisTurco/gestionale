@@ -85,13 +85,12 @@ CREATE TABLE IF NOT EXISTS products (
     product_code TEXT UNIQUE,
     ean TEXT,
     [description] TEXT NOT NULL,
-    stock_quantity INTEGER DEFAULT 0,
+    stock_quantity INTEGER,
     vat_percentage REAL NOT NULL,
     price REAL NOT NULL,
     FOREIGN KEY(id_category) REFERENCES product_categories(id),
     FOREIGN KEY(id_status) REFERENCES product_statuses(id),
     CHECK (vat_percentage >= 0 AND vat_percentage <= 100),
-    CHECK (stock_quantity >= 0),
     CHECK (price > 0)
 );
 
@@ -183,7 +182,7 @@ INSERT OR IGNORE INTO user_roles ([name]) VALUES
 INSERT OR IGNORE INTO product_categories ([name]) VALUES
 ('Hardware'),
 ('Software'),
-('Services');
+('Service');
 
 INSERT OR IGNORE INTO product_statuses ([name], [description]) VALUES
 ('new with tag', 'New and unused item, with tag attached or in original packaging. The item is in perfect condition, unused, and in its original packaging.'),

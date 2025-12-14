@@ -2,9 +2,40 @@
 
 ## Description
 
-This project is a desktop web-based application built with Python and PyWebView.
-It uses a Flask-like structure with templates, routes, models, and repositories, providing a clean and modular architecture.
-The UI is rendered inside a native window through PyWebView, allowing a modern frontend experience while keeping a Python backend.
+This application is a comprehensive management system designed for handling clients, products, quotations, and company notes, featuring an intuitive interface and advanced administrative tools. It is intended for sales and administrative teams who need a centralized tool to organize business information.
+
+### Main Features
+
+1. Authentication
+   - Secure login for pre-registered users via the database.
+   - Centralized user management (no registration within the app).
+2. Client Management
+   - Create, edit, and delete clients.
+   - Advanced search, sorting, and filtering.
+   - Optional interactive map view (Google Maps-style).
+3. Product Management
+   - Create, edit, and delete products.
+   - Categorization of products.
+   - Search and sorting functionality.
+   - Management of stock, pricing, and VAT.
+4. Quotation Management
+   - Associate quotations with existing clients.
+   - Kanban view to track quotation status.
+   - Quotation list with search and filters.
+   - Quotation statuses: Created, Delivered, Confirmed.
+   - Add products from the database or generic items.
+   - Export quotations as PDF.
+5. Notes Management
+   - Archive notes linked to clients or quotations.
+   - Automatic timestamp for each note.
+
+### Database
+
+The app uses SQLite for data management, with structured tables for users, clients, contracts, products, categories, quotations, quotation products (both from the database and generic), and notes. The database structure supports:
+
+- Typing for clients, contracts, products, and quotation statuses.
+- Relationships between clients, contracts, and quotations.
+- Detailed management of products and categories.
 
 ## Getting Started
 
